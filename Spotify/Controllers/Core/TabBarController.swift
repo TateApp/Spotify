@@ -64,6 +64,7 @@ class TabBarController: UITabBarController, UIGestureRecognizerDelegate, getData
               navCategorieViewController.isNavigationBarHidden = true
               
               let yourLibraryViewController = YourLibraryViewController()
+        yourLibraryViewController.protocolVar = self
               yourLibraryViewController.title  = "Library"
            
               let navYourLibraryViewController = UINavigationController(rootViewController: yourLibraryViewController)

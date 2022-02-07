@@ -1,6 +1,11 @@
 import UIKit
 
-class YourLibraryViewController :UIViewController {
+class YourLibraryViewController : UIViewController, getDataIntoPlayer_ViewController {
+    func passBackData(trackID: String) {
+        protocolVar?.passBackData(trackID: trackID)
+    }
+    var protocolVar : getDataIntoPlayerView?
+    
     
     let yourLibraryLabel = UILabel()
     let topBar = UIView()
@@ -136,6 +141,7 @@ extension YourLibraryViewController : UITableViewDelegate, UITableViewDataSource
             case .success(let reponse):
                 DispatchQueue.main.async {
                     let vc = PlaylistViewController(playlist: reponse)
+                    vc.protocolVar = self
                     guard self.navigationController?.topViewController == self else { return }
                     self.navigationController?.pushViewController(vc, animated: true)
                 }
